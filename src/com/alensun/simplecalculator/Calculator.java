@@ -1,4 +1,4 @@
-package com.example.helloandroid;
+package com.alensun.simplecalculator;
 
 import java.util.Stack;
 
