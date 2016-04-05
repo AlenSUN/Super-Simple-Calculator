@@ -44,11 +44,11 @@ public class MainActivity extends Activity {
 			case R.id.multiply:
 			case R.id.divide:
 			case R.id.equal:
-				text = c.sendOperation((String) v.getTag());
+				text = c.sendOperation(((String) v.getTag()).charAt(0));
 				break;
 				
 			default:
-				text = c.sendNumber(((Button)v).getText().toString());
+				text = c.sendNumber(((Button)v).getText().toString().charAt(0));
 				break;
 			}
 			

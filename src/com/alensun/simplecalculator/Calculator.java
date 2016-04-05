@@ -1,5 +1,6 @@
 package com.alensun.simplecalculator;
 
+import java.math.BigDecimal;
 import java.util.Stack;
 
 public class Calculator {
@@ -10,7 +11,7 @@ public class Calculator {
 		exps = new Stack<String>();
 	}
 	
-	public String sendNumber(String c) {
+	public String sendNumber(char c) {
 		if (isJustEqualed) {
 			exps.pop();
 			isJustEqualed = false;
@@ -20,7 +21,7 @@ public class Calculator {
 		}
 		String item = exps.pop();
 		
-		switch (c.charAt(0)) {
+		switch (c) {
 		case '0':
 			if (!item.equals("0")) {
 				item += c;
@@ -56,8 +57,8 @@ public class Calculator {
 		return exps.push(item);
 	}
 	
-	public String sendOperation(String c) {
-		switch (c.charAt(0)) {
+	public String sendOperation(char c) {
+		switch (c) {
 		case '+':
 		case '-':
 		case '*':
@@ -68,10 +69,10 @@ public class Calculator {
 				calculate(exps);
 			}
 			if (exps.size() == 1) {
-				exps.push(c);
+				exps.push("" + c);
 			} else if (exps.size() == 2) {
 				exps.pop();
-				exps.push(c);
+				exps.push("" + c);
 			}
 			isJustEqualed = false;
 			break;
@@ -92,45 +93,37 @@ public class Calculator {
 			break;
 		}
 		
-		String result = exps.firstElement();
-		if (result.contains(".")) {
-			while (result.endsWith("0")) {
-				result = result.substring(0, result.length() - 1);
-			}
-			if (result.endsWith(".")) {
-				result = result.substring(0, result.length() - 1);
-			}
-		}
-		return result;
+		return exps.firstElement();
 	}
 	
 	private void calculate(Stack<String> exps) {
-		double item2 = Double.valueOf(exps.pop());
+		BigDecimal item2 = new BigDecimal(exps.pop());
 		String op = exps.pop();
-		double item1 = Double.valueOf(exps.pop());
-		double result = 0;
+		BigDecimal item1 = new BigDecimal(exps.pop());
+		BigDecimal result = null;
 		
 		switch (op.charAt(0)) {
 		case '+':
-			result = item1 + item2;
+			result = item1.add(item2);
 			break;
 			
 		case '-':
-			result = item1 - item2;
+			result = item1.subtract(item2);
 			break;
 			
 		case '*':
-			result = item1 * item2;
+			result = item1.multiply(item2);
 			break;
 			
 		case '/':
-			result = item1 / item2;
+			result = item1.divide(item2);
 			break;
 
 		default:
 			break;
 		}
 		
-		exps.add("" + result);
+		result = result.stripTrailingZeros();
+		exps.push(result.toString());
 	}
 }
