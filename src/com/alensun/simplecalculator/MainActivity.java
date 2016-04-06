@@ -10,7 +10,7 @@ import android.widget.GridLayout;
 
 public class MainActivity extends Activity {
 	private Calculator c;
-	
+
 	private GridLayout board;
 	private EditText displayText;
 	private String text = "0";
@@ -19,14 +19,14 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		board = (GridLayout) findViewById(R.id.board);
 		displayText = (EditText) findViewById(R.id.display);
-		
+
 		c = new Calculator();
 		addClickListeners();
 	}
-	
+
 	private void addClickListeners() {
 		int n = board.getChildCount();
 		for (int i = 0; i < n; i++) {
@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 	}
 
 	private OnClickListener mListener = new OnClickListener() {
-		
+
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
@@ -46,12 +46,12 @@ public class MainActivity extends Activity {
 			case R.id.equal:
 				text = c.sendOperation(((String) v.getTag()).charAt(0));
 				break;
-				
+
 			default:
-				text = c.sendNumber(((Button)v).getText().toString().charAt(0));
+				text = c.sendNumber(((Button) v).getText().charAt(0));
 				break;
 			}
-			
+
 			displayText.setText(text);
 		}
 	};

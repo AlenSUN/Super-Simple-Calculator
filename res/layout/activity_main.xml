@@ -3,185 +3,186 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.alensun.simplecalculator.MainActivity" >
-    
+
+    <EditText
+        android:id="@+id/display"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:layout_columnSpan="4"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:editable="false"
+        android:focusable="false"
+        android:gravity="right|bottom"
+        android:inputType="number"
+        android:text="0"
+        android:textSize="44sp" />
+
     <GridLayout
         android:id="@+id/board"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:rowCount="5"
-        android:columnCount="4" >
-        
-        <EditText
-            android:id="@+id/display"
-            android:layout_width="match_parent"
-            android:layout_height="196dp"
-            android:layout_columnSpan="4"
-            android:inputType="number"
-            android:gravity="right|bottom"
-            android:text="0"
-            android:textSize="44sp"
-            android:editable="false"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false" />
-        
+        android:layout_below="@id/display"
+        android:columnCount="4"
+        android:rowCount="5" >
+
         <Button
             android:id="@+id/clear"
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="C" />
-        
+
         <Button
             android:id="@+id/delete"
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="del" />
-        
+
         <Button
             android:id="@+id/divide"
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
-        	android:tag="/"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:tag="/"
             android:text="÷" />
-        
+
         <Button
             android:id="@+id/multiply"
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
-        	android:tag="*"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:tag="*"
             android:text="×" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="7" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="8" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="9" />
-        
+
         <Button
             android:id="@+id/minus"
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
-        	android:tag="-"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:tag="-"
             android:text="-" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="4" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="5" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="6" />
-        
+
         <Button
             android:id="@+id/plus"
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
-        	android:tag="+"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:tag="+"
             android:text="+" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="1" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="2" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="3" />
-        
+
         <Button
             android:id="@+id/equal"
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowSpan="2"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
-        	android:tag="="
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowSpan="2"
+            android:layout_rowWeight="1"
+            android:tag="="
             android:text="=" />
-        
+
         <Button
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_columnSpan="2"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="0" />
-        
+
         <Button
             android:id="@+id/dot"
             android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_rowWeight="1"
-        	android:layout_columnWeight="1"
-        	android:layout_gravity="fill"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
             android:text="." />
     </GridLayout>
 

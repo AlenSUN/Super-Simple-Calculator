@@ -6,11 +6,11 @@ import java.util.Stack;
 public class Calculator {
 	private Stack<String> exps;
 	private boolean isJustEqualed = false;
-	
+
 	public Calculator() {
 		exps = new Stack<String>();
 	}
-	
+
 	public String sendNumber(char c) {
 		if (isJustEqualed) {
 			exps.pop();
@@ -20,24 +20,25 @@ public class Calculator {
 			exps.push("0");
 		}
 		String item = exps.pop();
-		
+
 		switch (c) {
 		case '0':
 			if (!item.equals("0")) {
 				item += c;
 			}
 			break;
-			
+
 		case '.':
 			if (!item.contains(".")) {
 				item += c;
 			}
 			break;
-			
+
 		case 'C':
+			exps.clear();
 			item = "0";
 			break;
-			
+
 		case 'd':
 			if (item.length() > 1) {
 				item = item.substring(0, item.length() - 1);
@@ -53,10 +54,10 @@ public class Calculator {
 			item += c;
 			break;
 		}
-		
+
 		return exps.push(item);
 	}
-	
+
 	public String sendOperation(char c) {
 		switch (c) {
 		case '+':
@@ -76,7 +77,7 @@ public class Calculator {
 			}
 			isJustEqualed = false;
 			break;
-			
+
 		case '=':
 			if (exps.size() >= 3) {
 				calculate(exps);
@@ -92,37 +93,49 @@ public class Calculator {
 		default:
 			break;
 		}
-		
+
 		return exps.firstElement();
 	}
-	
+
 	private void calculate(Stack<String> exps) {
-		BigDecimal item2 = new BigDecimal(exps.pop());
-		String op = exps.pop();
-		BigDecimal item1 = new BigDecimal(exps.pop());
-		BigDecimal result = null;
-		
+		String op = null;
+		BigDecimal item1 = null, item2 = null, result = null;
+
+		try {
+			item2 = new BigDecimal(exps.pop());
+			op = exps.pop();
+			item1 = new BigDecimal(exps.pop());
+		} catch (NumberFormatException e) {
+			exps.push("³ö´í");
+			return;
+		}
+
 		switch (op.charAt(0)) {
 		case '+':
 			result = item1.add(item2);
 			break;
-			
+
 		case '-':
 			result = item1.subtract(item2);
 			break;
-			
+
 		case '*':
 			result = item1.multiply(item2);
 			break;
-			
+
 		case '/':
-			result = item1.divide(item2);
+			try {
+				result = item1.divide(item2, 8, BigDecimal.ROUND_HALF_UP);
+			} catch (ArithmeticException e) {
+				exps.push("³ö´í");
+				return;
+			}
 			break;
 
 		default:
 			break;
 		}
-		
+
 		result = result.stripTrailingZeros();
 		exps.push(result.toString());
 	}
